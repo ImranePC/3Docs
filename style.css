@@ -1,0 +1,30 @@
+* {
+    --main-color:rgb(170, 96, 255);
+}
+
+.text-color-main {
+    color: var(--main-color);
+}
+
+a {
+    color: var(--main-color);
+}
+
+.rounded-xl {
+    border-radius: 8px;
+}
+
+.bg-main {
+    background-color: var(--main-color);
+}
+
+.btn-main {
+    background-color: var(--main-color);
+    color: white;
+    transition: 0.3s;
+}
+.btn-main:hover {
+    background-color: var(--main-color);
+    filter: brightness(85%);
+}
+
