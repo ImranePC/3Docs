@@ -11,12 +11,9 @@ a {
     color: var(--main-color);
 }
 
-.rounded-xl {
-    border-radius: 8px;
-}
-.rounded-top-xl {
-    border-radius: 8px 8px 0 0;
-}
+.rounded-xl { border-radius: 8px }
+.rounded-top-xl { border-radius: 8px 8px 0 0 }
+.rounded-bottom-xl { border-radius: 0 0 8px 8px }
 
 .bg-main {
     background-color: var(--main-color);
@@ -37,8 +34,6 @@ a {
     font-size: 12px;
 }
 
-.box {
-    height: 250px;
-    width: 250px;
-    background-color: gray;
+.bg-grey {
+    background-color: #f5f5f5;
 }
