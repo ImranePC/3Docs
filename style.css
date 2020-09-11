@@ -1,5 +1,6 @@
 * {
     --main-color:rgb(170, 96, 255);
+    --main-color-darker: 
 }
 
 .text-color-main {
@@ -12,6 +13,9 @@ a {
 
 .rounded-xl {
     border-radius: 8px;
+}
+.rounded-top-xl {
+    border-radius: 8px 8px 0 0;
 }
 
 .bg-main {
@@ -28,3 +32,13 @@ a {
     filter: brightness(85%);
 }
 
+.text-note {
+    color: grey;
+    font-size: 12px;
+}
+
+.box {
+    height: 250px;
+    width: 250px;
+    background-color: gray;
+}
