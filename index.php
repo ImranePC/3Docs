@@ -3,16 +3,17 @@ session_start();
 
 // Default value
 $_SESSION['alertView'] = "d-none";
-$_SESSION['searchView'] = "d-block";
 if (!isset($_SESSION['alertMsg'])) $_SESSION['alertMsg'] = "";
 if (!isset($_SESSION['searchResult'])) $_SESSION['searchResult'] = "";
 if (!isset($_SESSION['searchArgument'])) $_SESSION['searchArgument'] = "";
+if (!isset($_SESSION['searchView'])) $_SESSION['searchView'] = "d-none";
 
 // Alert Enable
 if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
     $_SESSION['alertView'] = "d-block";
     $_SESSION['msgFlash'] = false;
 }
+
 
 ?>
 <!DOCTYPE html>
