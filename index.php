@@ -56,7 +56,9 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
                 <?=$_SESSION['alertMsg']?> 
             </div>    
             <p class="text-center h5">Upload modèle 3D</p>
-            <form action="serv/insert.php" method="POST">
+
+            <!--Upload form-->
+            <form action="serv/insert.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label>Votre nom <span class="text-note">- Il vous servira plus tard à retrouver vos modèles</span></label>
                     <input maxlength="24" type="text" class="form-control mb-4" required name="inputName">
