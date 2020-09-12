@@ -3,7 +3,10 @@ session_start();
 
 // Default value
 $_SESSION['alertView'] = "d-none";
+$_SESSION['searchView'] = "d-block";
 if (!isset($_SESSION['alertMsg'])) $_SESSION['alertMsg'] = "";
+if (!isset($_SESSION['searchResult'])) $_SESSION['searchResult'] = "";
+if (!isset($_SESSION['searchArgument'])) $_SESSION['searchArgument'] = "";
 
 // Alert Enable
 if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
@@ -70,6 +73,38 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
                 <div class="text-center"><button type="submit" class="btn btn-main mt-3">Upload</button></div>
             </form>
 
+        </div>
+    </div>
+
+    <div class="container mt-5 shadow-sm border bg-white col-lg-4 rounded-xl" id="search">
+        <div class="m-3">
+            <p class="text-center h5">Recherche modèle 3D</p>
+            <form action="serv/search.php" method="post">
+                <div class="mb-3">
+                    <label>Nom de l'auteur</label>
+                    <input maxlength="24" type="text" class="form-control" required name="inputAuthor">
+                </div>
+
+                <div class="text-center"><button type="submit" class="btn btn-main">Search</button></div>
+            </form>
+        </div>
+
+        <div class="<?=$_SESSION['searchView']?>">
+            <table class="table table-sm table-striped table-hover">
+            <thead>
+                <tr class="text-center"><th colspan="4">Search result for '<?=$_SESSION['searchArgument']?>'</th></tr>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Author</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Search content-->
+                <?=$_SESSION['searchResult']?>
+            </tbody>
+            </table>
         </div>
     </div>
 
