@@ -95,7 +95,7 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
         <div class="<?=$_SESSION['searchView']?>">
             <table class="table table-sm table-striped table-hover">
             <thead>
-                <tr class="text-center"><th colspan="4">Search result for '<?=$_SESSION['searchArgument']?>'</th></tr>
+                <tr class="text-center text-success"><th colspan="4">Search result for '<?=$_SESSION['searchArgument']?>'</th></tr>
                 <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Author</th>
