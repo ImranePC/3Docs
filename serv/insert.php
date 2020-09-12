@@ -5,14 +5,16 @@ include('conn.php');
 // Get POST values
 $author = $_POST['inputName'];
 $description = $_POST['inputDesc'];
-$file = $_POST['inputFile'];
+$fileName = $_FILES['inputFile']['name'];
+$file = file_get_contents($_FILES['inputFile']['tmp_name']);
+
 $alertMsg = "";
 
 //// Verify POST values
 $error = false;
 
 // 1 - file extension
-if (strpos($file, '.gltf') !== false OR strpos($file, '.glb') !== false){
+if (strpos($fileName, '.gltf') !== false OR strpos($fileName, '.glb') !== false){
     // No error, continue
 } else {
     // Wrong file extension
@@ -28,9 +30,6 @@ if (strlen($description) > 24 OR strlen($author) > 24) {
     }
     $alertMsg .= "Name or description too long, 24 characters max";
 }
-
-
-echo "$author - $description - $file";
 
 if ($error == true) {
 
@@ -52,7 +51,7 @@ while ($result != 0) {
 }
 
 // Insert
-$sql = "INSERT into models (idmodel, author, description, file) VALUES (:idmodel,:author,:description,:file)";
+$sql = "INSERT into models (idmodel, author, description, file) VALUES (:idmodel,:author,:description, :file)";
 $query = $conn->prepare($sql);
 $query->execute(array(
     'idmodel' => $idModel,

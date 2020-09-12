@@ -1,5 +1,4 @@
 <?php
-
 include("login.php");
 
 $dbname = "3docs_db";
