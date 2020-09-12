@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-
+// Test change
 // Default value
 $_SESSION['alertView'] = "d-none";
 if (!isset($_SESSION['alertMsg'])) $_SESSION['alertMsg'] = "";
