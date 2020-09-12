@@ -3,13 +3,11 @@ session_start();
 
 // Default value
 $_SESSION['alertView'] = "d-none";
-if (!isset($_SESSION['idModel'])) $_SESSION['idModel'] = "undefined";
+if (!isset($_SESSION['alertMsg'])) $_SESSION['alertMsg'] = "";
 
 // Alert Enable
 if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
     $_SESSION['alertView'] = "d-block";
-    $_SESSION['modelId'] = "ID here";
-
     $_SESSION['msgFlash'] = false;
 }
 
@@ -50,8 +48,8 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
 
     <div class="container mt-5 shadow-sm border bg-white col-lg-4 rounded-xl">
         <div class="m-3">
-            <div class="alert alert-success <?=$_SESSION['alertView']?>" role="alert">
-                Votre modèle à bien été mis en ligne, voici son ID : <b><?=$_SESSION['idModel']?></b> 
+            <div class="alert alert-<?=$_SESSION['alertColor']?> <?=$_SESSION['alertView']?>" role="alert">
+                <?=$_SESSION['alertMsg']?> 
             </div>    
             <p class="text-center h5">Upload modèle 3D</p>
             <form action="serv/insert.php" method="POST">
