@@ -116,7 +116,7 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
         <form>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Put ID here : #ID11111" required>
+                    <input type="text" class="form-control" placeholder="Put ID here : ID11111" required>
                 </div>
                 <div class="col">
                     <button type="button" class="btn btn-block btn-outline-light">Générer l'url</button>

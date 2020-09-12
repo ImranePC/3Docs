@@ -6,7 +6,7 @@ include('conn.php');
 $author = $_POST['inputName'];
 $description = $_POST['inputDesc'];
 $fileName = $_FILES['inputFile']['name'];
-$file = file_get_contents($_FILES['inputFile']['tmp_name']);
+//$file = file_get_contents($_FILES['inputFile']['tmp_name']);
 
 $alertMsg = "";
 
@@ -31,12 +31,11 @@ if (strlen($description) > 24 OR strlen($author) > 24) {
     $alertMsg .= "Name or description too long, 24 characters max";
 }
 
+    // if error, go back
 if ($error == true) {
-
     $_SESSION['alertMsg'] = $alertMsg;
     $_SESSION['alertColor'] = "danger";
     header("Location: ../index.php");
-
 } else {
 
 // Generate unique idModel
@@ -45,19 +44,32 @@ $sql = "SELECT COUNT(idmodel) FROM models WHERE idmodel = ?";
 $query = $conn->prepare($sql);
 
 while ($result != 0) {
-    $idModel = substr("#ID".str_shuffle(uniqid()), 0, 9);
+    $idModel = substr("ID".str_shuffle(uniqid()), 0, 9);
     $query->execute(array($idModel));
     $result = $query->fetchColumn();
 }
 
+// Upload to server
+$savePath = "/wamp64/www/3Docs/model/";
+$savedFileName = $idModel;
+
+if (move_uploaded_file($_FILES['inputFile']['tmp_name'], $savePath . $savedFileName)) {
+    // It work
+} else {
+    $alertMsg = "We are encountering a server problem, please try again later.";
+    $_SESSION['alertMsg'] = $alertMsg;
+    $_SESSION['alertColor'] = "danger";
+    header("Location: ../index.php");
+};
+
 // Insert
-$sql = "INSERT into models (idmodel, author, description, file) VALUES (:idmodel,:author,:description, :file)";
+$sql = "INSERT into models (idmodel, author, description, filename) VALUES (:idmodel,:author,:description, :filename)";
 $query = $conn->prepare($sql);
 $query->execute(array(
     'idmodel' => $idModel,
     'author' => $author,
     'description' => $description,
-    'file' => $file
+    'filename' => $fileName
 ));
 
 $_SESSION['alertMsg'] = "Votre modèle à bien été mis en ligne, voici son ID : $idModel";
