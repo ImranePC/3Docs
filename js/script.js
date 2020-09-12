@@ -1,5 +1,15 @@
 import { OrbitControls } from "https://threejs.org/examples/jsm/controls/OrbitControls.js";
-var selectedMesh = 'model/toybrick.gltf';
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const loadedModel = urlParams.get('load');
+
+// load mesh
+if (loadedModel == null) {
+    var selectedMesh = 'model/empty';    
+} else {
+    var selectedMesh = 'model/' + loadedModel;    
+}
 
 // renderer
 var renderer = new THREE.WebGLRenderer();
@@ -16,7 +26,7 @@ camera.position.z = 3;
 // controls
 var controls = new OrbitControls(camera, renderer.domElement);
 
-// geometry & mesh
+// cube geometry & mesh
 var geometry = new THREE.BoxGeometry( 1, 1, 1);
 var material = new THREE.MeshPhongMaterial( {color: "#3b5998"} );
 var cube = new THREE.Mesh( geometry, material );
@@ -25,8 +35,9 @@ var cube = new THREE.Mesh( geometry, material );
 var loader = new THREE.GLTFLoader();
 loader.load(selectedMesh, function(gltf) {
     scene.add (gltf.scene);
-}, undefined, function (error) {
-    console.error(error);
+}, undefined, function(gltf) {
+    scene.add(cube);
+    scene.add (gltf.scene);
 } );
 
 // ambient
@@ -35,7 +46,7 @@ scene.add(ambientLight);
 
 // light
 var directionalLight = new THREE.DirectionalLight(0xFFFFFF, 4);
-directionalLight.position.set(1,1,0);
+directionalLight.position.set(1,1,0.5);
 scene.add(directionalLight);
 
 function animate() {
