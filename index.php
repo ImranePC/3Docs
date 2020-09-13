@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-// Test change again
+
 // Default value
 $_SESSION['alertView'] = "d-none";
 if (!isset($_SESSION['alertMsg'])) $_SESSION['alertMsg'] = "";
@@ -38,7 +38,7 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
             <p class="text-center h5">Comment ça marche ?</p>
             <ul>
                 <li>Préparez votre modèle 3D exporté au format .glb / .gltf. 
-                    <button type="button" class="sbtn btn-sm border-0 btn-secondary bg-main" data-toggle="popover" title="" data-content="Le GLB / GLTF est plus compacte que le .fbx ou le .obj il est donc plus optimisé pour le web.">Pourquoi le gltf ?</button>
+                    <button type="button" id="formatBtn" class="btn btn-sm border-0 btn-secondary bg-main" data-toggle="popover" title="" data-content="Le GLB / GLTF est plus compacte que le .fbx ou le .obj il est donc plus optimisé pour le web.">Pourquoi le gltf ?</button>
                 </li>
                 <li>Uploadez le modèle via le formulaire ci-dessous, vous recevrez un code unique lié à votre modèle.</li>
                 <li>Copiez-collez ce code dans la boxe qui générera une URL pour intégrer le visionneur 3D dans vos sites</li>
@@ -97,8 +97,8 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
             <thead>
                 <tr class="text-center text-success"><th colspan="4">Search result for '<?=$_SESSION['searchArgument']?>'</th></tr>
                 <tr>
+                <th scope="col"></th>
                 <th scope="col">ID</th>
-                <th scope="col">Author</th>
                 <th scope="col">Description</th>
                 <th scope="col">Date</th>
                 </tr>
@@ -116,11 +116,11 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
         <form>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Put ID here : ID11111" required>
-                </div>
+                    <button type="button" id="pasteBtn" class="btn btn-block btn-outline-light">Paste</button>
+                </div>  
                 <div class="col">
-                    <button type="button" class="btn btn-block btn-outline-light">Générer l'url</button>
-                </div>    
+                    <input type="text" id="searchId" class="form-control" placeholder="Put ID here : ID11111" required>
+                </div>  
             </div>
         </div>
     </div>
@@ -141,18 +141,26 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
                     <label class="custom-control-label" for="customCheck3">Parameter 2</label>
                 </div>
             </form>
-        </div>
-        
-            <div class="container-fluid text-center text-color-main pt-3"><i class="fas fa-long-arrow-alt-down fa-4x"></i></div>
+            </div>
+
+            <div class="text-center">
+                <button type="button" onclick="updateUrl()" class="btn rounded-0 btn-block btn-outline-secondary">Générer l'url</button>
+                <div class="container-fluid text-center text-color-main pt-3 pb-2"><i class="fas fa-long-arrow-alt-down fa-4x"></i></div>
+                <button type="button" onclick="copy('outputUrl')" class="btn btn-sm border btn-secondary">Copy</button>
+            </div>
 
             <div class="p-3">
-                <input type="text" class="form-control form-control-sm" placeholder="Output url" required value="http://...">
+                <input id="outputUrl" type="text" class="form-control form-control-sm" placeholder="Output url" required value="http://...">
+            </div>
+
+        </div>
+        
+        <div class="p-4">
+            <div class="embed-responsive embed-responsive-1by1 mb-3">
+                <iframe id="previewFrame" class="embed-responsive-item rounded-xl" src="viewer.html?load="></iframe>
             </div>
         </div>
- 
-        <div class="embed-responsive embed-responsive-1by1 mb-3">
-            <!--<iframe class="embed-responsive-item rounded-xl" src="viewer.html"></iframe>-->
-        </div>
+
     </div>
 
     <div class="container m-5 p-5"></div>                   
@@ -175,6 +183,33 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
         $('[data-toggle="popover"]').popover({
             trigger: 'focus'
         })
+
+        // Update iframe on search
+        function updateUrl() {
+            var searchId = document.getElementById("searchId").value;
+            var outputUrl = "<iframe src='http://localhost/3Docs/viewer.html?load=" + searchId + "'></iframe>";
+            document.getElementById("outputUrl").value = outputUrl;
+            document.getElementById("previewFrame").src = "http://localhost/3Docs/viewer.html?load=" + searchId;
+        }
+
+        // Copy to clipboard
+        function copy(id) {
+            var copyText = document.getElementById(id);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+        }
+        // // Paste to input
+        document.getElementById('pasteBtn').addEventListener('click', ()=>{
+            let pasteZone = document.getElementById('searchId');
+            pasteZone.value = '';
+
+            navigator.clipboard.readText()
+            .then((text)=>{
+                pasteZone.value = text;
+            });
+        });
+
 
     </script>
 </body>

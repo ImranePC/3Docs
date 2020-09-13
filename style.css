@@ -37,3 +37,14 @@ a {
 .bg-grey {
     background-color: #f5f5f5;
 }
+
+textarea {
+    resize: none;
+    width: 100%;
+    border: 1px solid var(--main-color);
+    color: #616161;
+}
+textarea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1pt var(--main-color);
+}

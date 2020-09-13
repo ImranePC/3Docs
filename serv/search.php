@@ -13,8 +13,15 @@ $searchResult = $conn->query("SELECT * FROM models WHERE author = '$author'")->f
 // Get values
 if (!empty($searchResult)) {
     foreach ($searchResult as $row) {
-        $date = date("m/d/Y", strtotime($row['date']));
-        $resultTable .= "<tr><td>".$row['idmodel']."</td><td>".$row['author']."</td><td>".$row['description']."</td><td>".$date."</td></tr>";
+        $date = date("m/d/y", strtotime($row['date']));
+        $id = "row".$row['id'];
+        $idmodel = $row['idmodel'];
+        $description = $row['description'];
+        if (strlen($description) > 10) $description = substr($description, 0, 9) . "...";
+
+        $resultTable .= 
+        "<tr><td style='width: 50px'><button type='button' onclick=\"copy('$id')\" class='btn btn-outline-dark btn-sm' data-toggle='popover' data-placement='left' data-content='Copied !'>Copy ID</button>"
+        ."</td><td style='width: 150px'><textarea id='$id' rows='1'>$idmodel</textarea></td><td>".$description."</td><td>".$date."</td></tr>";
     }
 } else {
     $resultTable = "<tr><td colspan='4'>Nothing has been found.</td></tr>";
