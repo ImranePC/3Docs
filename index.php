@@ -28,6 +28,8 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
 </head>
 <body class="bg-light">
     
+    <navbar><!-- Content Here --></navbar>
+
     <div class="container text-center mt-5 col-lg-4">
         <h1 class="display-4 text-color-main mt-2">3Docs</h1>
         <p class="text-muted">Hebergement de modèles 3D et intégrations sur vos sites.</p>
