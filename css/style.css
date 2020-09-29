@@ -7,10 +7,6 @@
     color: var(--main-color);
 }
 
-a {
-    color: var(--main-color);
-}
-
 .rounded-xl { border-radius: 8px }
 .rounded-top-xl { border-radius: 8px 8px 0 0 }
 .rounded-bottom-xl { border-radius: 0 0 8px 8px }
@@ -24,6 +20,7 @@ a {
     color: white;
     transition: 0.3s;
 }
+
 .btn-main:hover {
     background-color: var(--main-color);
     filter: brightness(85%);
@@ -44,7 +41,49 @@ textarea {
     border: 1px solid var(--main-color);
     color: #616161;
 }
+
 textarea:focus {
     outline: 0;
     box-shadow: 0 0 0 1pt var(--main-color);
 }
+
+
+/* Navbar Begin */
+.my-navbar {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--main-color);
+    border-radius: 0 0 32px 32px;
+    padding: 5px;
+}
+
+.my-navbar-links {
+    display: flex;
+    justify-content: center;
+}
+
+.my-navbar-links a {
+    color: white;
+    font-weight: bold;
+    margin: 0 15px 0 15px;
+}
+.my-navbar-links a:hover { text-decoration: none }
+
+.nav-link {
+    text-align: center;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    color: white;
+    border-radius: 8px;
+    background-color: none;
+    overflow: hidden;
+}
+
+.nav-link:hover {
+    background-color: white;
+    color: rgb(29, 29, 29);
+}
+/* Navbar End */

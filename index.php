@@ -14,7 +14,6 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
     $_SESSION['msgFlash'] = false;
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,12 +22,18 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3Docs - Accueil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/3aaf8783cf.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-light">
     
-    <navbar><!-- Content Here --></navbar>
+    <div class="my-navbar">
+        <div class="my-navbar-links">
+            <a href="#1"><div class="nav-link">View</div></a>
+            <a href="#2"><div class="nav-link">Upload</div></a>
+            <a href="#3"><div class="nav-link">Search</div></a>
+        </div>
+    </div>
 
     <div class="container text-center mt-5 col-lg-4">
         <h1 class="display-4 text-color-main mt-2">3Docs</h1>
