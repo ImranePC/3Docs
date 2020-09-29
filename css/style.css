@@ -1,6 +1,6 @@
 * {
     --main-color:rgb(170, 96, 255);
-    --main-color-darker: 
+    --main-color-darker: rgb(146, 71, 231);
 }
 
 .text-color-main {
@@ -57,33 +57,45 @@ textarea:focus {
     transform: translateX(-50%);
     background-color: var(--main-color);
     border-radius: 0 0 32px 32px;
-    padding: 5px;
 }
 
 .my-navbar-links {
     display: flex;
     justify-content: center;
+    margin: 0 32px 0 32px;
 }
 
 .my-navbar-links a {
     color: white;
     font-weight: bold;
-    margin: 0 15px 0 15px;
 }
 .my-navbar-links a:hover { text-decoration: none }
 
 .nav-link {
     text-align: center;
     font-family: Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
-    border-radius: 8px;
     background-color: none;
     overflow: hidden;
+    transition: 0.2s;
 }
 
 .nav-link:hover {
-    background-color: white;
-    color: rgb(29, 29, 29);
+    background-color: var(--main-color-darker);
 }
 /* Navbar End */
+
+
+/* Media queries */
+@media (max-width: 768px) {
+    body { overflow-x: hidden }
+    .my-navbar {
+        left: 0;
+        border-radius: 0;
+        transform: translateX(0%);
+        width: 100%;
+    }
+    .my-navbar-links { justify-content: space-around }
+    .nav-link { font-size: 16px }
+}

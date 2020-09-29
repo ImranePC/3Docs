@@ -27,13 +27,7 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
 </head>
 <body class="bg-light">
     
-    <div class="my-navbar">
-        <div class="my-navbar-links">
-            <a href="#1"><div class="nav-link">View</div></a>
-            <a href="#2"><div class="nav-link">Upload</div></a>
-            <a href="#3"><div class="nav-link">Search</div></a>
-        </div>
-    </div>
+    <?php include 'nav.html' ?>
 
     <div class="container text-center mt-5 col-lg-4">
         <h1 class="display-4 text-color-main mt-2">3Docs</h1>
@@ -176,6 +170,7 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
     <script>
         // Fileinput name change on upload
         $(".custom-file-input").on("change", function() {
@@ -216,8 +211,6 @@ if (isset($_SESSION['msgFlash']) AND $_SESSION['msgFlash'] == true) {
                 pasteZone.value = text;
             });
         });
-
-
     </script>
 </body>
 </html>
