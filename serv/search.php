@@ -30,6 +30,6 @@ if (!empty($searchResult)) {
 // End
 $_SESSION['searchResult'] = $resultTable;
 $_SESSION['searchView'] = "d-block";
-header("Location: ../index.php#search");
+header("Location: ../research");
 
 ?>

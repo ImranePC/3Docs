@@ -1,0 +1,28 @@
+<!-- upload.html -->
+<div class="container mt-5 shadow-sm border bg-white col-lg-4 rounded-xl">
+    <div class="m-3">
+        <div class="alert alert-<?=$_SESSION['alertColor']?> <?=$_SESSION['alertView']?>" role="alert">
+            <?=$_SESSION['alertMsg']?> 
+        </div>    
+        <p class="text-center h5">Upload modèle 3D</p>
+
+        <form action="serv/insert.php" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label>Votre nom <span class="text-note">- Il vous servira plus tard à retrouver vos modèles</span></label>
+                <input maxlength="24" type="text" class="form-control mb-4" required name="inputName">
+            </div>
+            <div class="mb-3">
+                <label>Courte description <span class="text-note">- 'Bloc lego','Petit arbre','Scène ville' ...</span></label>
+                <input maxlength="24" type="text" class="form-control mb-4" required name="inputDesc">
+            </div>
+            <label>Modèle 3D</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" required name="inputFile">
+                <label class="custom-file-label" for="customFile">...</label>
+            </div>
+            
+            <div class="text-center"><button type="submit" class="btn btn-main mt-3">Upload</button></div>
+        </form>
+
+    </div>
+</div>

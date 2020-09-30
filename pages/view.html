@@ -1,0 +1,51 @@
+<div class="container mt-5 shadow-sm border bg-main col-lg-4 rounded-top-xl">
+    <div class="m-3">
+    <form>
+        <div class="row">
+            <div class="col">
+                <button type="button" id="pasteBtn" class="btn btn-block btn-outline-light">Paste</button>
+            </div>  
+            <div class="col">
+                <input type="text" id="searchId" class="form-control" placeholder="Put ID here : ID11111" required>
+            </div>  
+        </div>
+    </div>
+</div>
+
+<div class="container p-0 shadow-sm border bg-white col-lg-4 rounded-bottom-xl">
+    <div>
+        <div class="p-4 border-bottom bg-grey">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Parameter 0</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                <label class="custom-control-label" for="customCheck2">Parameter 1</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                <label class="custom-control-label" for="customCheck3">Parameter 2</label>
+            </div>
+        </form>
+        </div>
+
+        <div class="text-center">
+            <button type="button" onclick="updateUrl()" class="btn rounded-0 btn-block btn-outline-secondary">Générer l'url</button>
+            <div class="container-fluid text-center text-color-main pt-3 pb-2"><i class="fas fa-long-arrow-alt-down fa-4x"></i></div>
+            <button type="button" onclick="copy('outputUrl')" class="btn btn-sm border btn-secondary">Copy</button>
+        </div>
+
+        <div class="p-3">
+            <input id="outputUrl" type="text" class="form-control form-control-sm" placeholder="Output url" required value="http://...">
+        </div>
+
+    </div>
+    
+    <div class="p-4">
+        <div class="embed-responsive embed-responsive-1by1 mb-3">
+            <iframe id="previewFrame" class="embed-responsive-item rounded-xl" src="viewer.html?load="></iframe>
+        </div>
+    </div>
+
+</div>

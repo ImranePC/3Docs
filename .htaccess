@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule home index.php
+RewriteRule upload ?page=upload
+RewriteRule view ?page=view
+RewriteRule research ?page=search

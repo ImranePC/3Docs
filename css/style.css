@@ -3,6 +3,10 @@
     --main-color-darker: rgb(146, 71, 231);
 }
 
+.custom-link {
+    color: var(--main-color);
+}
+
 .text-color-main {
     color: var(--main-color);
 }
